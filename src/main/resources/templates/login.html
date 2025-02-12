@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="row w-100">
+        <div class="col-md-6 offset-md-3">
+            <div class="card shadow-lg rounded-4 p-4" style="background: linear-gradient(135deg, #1E90FF, #4B0082); color: white;">
+                <div class="card-header text-center">
+                    <h3 class="fw-bold"><i class="fas fa-user-lock"></i> Login</h3>
+                </div>
+
+                <div class="card-body">
+                    <div th:if="${param.error}" class="alert alert-danger text-center">
+                        <th:block th:if="${session.SPRING_SECURITY_LAST_EXCEPTION!=null}">
+                            [[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]
+                        </th:block>
+                    </div>
+
+                    <div th:if="${param.logout}" class="alert alert-success text-center">
+                        Logout Successfully
+                    </div>
+
+                    <form action="/login" method="post">
+                        <div class="mb-3">
+                            <label class="form-label"><i class="fas fa-envelope"></i> Email</label>
+                            <input required class="form-control rounded-pill" name="username" type="email" placeholder="Enter your email">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label"><i class="fas fa-lock"></i> Password</label>
+                            <input required class="form-control rounded-pill" name="password" type="password" placeholder="Enter your password">
+                        </div>
+
+                        <button type="submit" class="btn btn-light text-dark fw-bold col-md-12 rounded-pill">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                    </form>
+                </div>
+
+                <div class="card-footer text-center">
+                    <a href="/forgot-password" class="text-white text-decoration-none">Forgot Password?</a><br>
+                    <span>Don't have an account? </span>
+                    <a href="#" class="text-warning text-decoration-none fw-bold">Create one</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+	</section>
+</body>
+</html>

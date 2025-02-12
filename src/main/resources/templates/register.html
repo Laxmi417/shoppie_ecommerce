@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+    <div class="container mt-5 p-5">
+         <div class="row justify-content-center">
+            <div class="col-md-7 p-2">
+                <div class="card shadow p-3 mb-5 rounded" style="background: linear-gradient(135deg, #1E90FF, #4B0082); color: white;">
+                    <div class="card-header text-center">
+                        <p class="fs-4 fw-bold"><i class="fas fa-user-plus"></i> Register</p>
+                        
+                        <th:block th:if="${session.succMsg}">
+                            <p class="text-success fw-bold">[[${session.succMsg}]]</p>
+                            <th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
+                        </th:block>
+
+                        <th:block th:if="${session.errorMsg}">
+                            <p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
+                            <th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
+                        </th:block>
+                    </div>
+
+                    <div class="card-body">
+                        <form action="/saveUser" enctype="multipart/form-data" id="userRegister" novalidate method="post">
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label"><i class="fas fa-user"></i> Full Name</label> 
+                                    <input required class="form-control rounded-2" name="name" type="text">
+                                </div>
+
+                                <div class="col">
+                                    <label class="form-label"><i class="fas fa-phone"></i> Mobile Number</label> 
+                                    <input required class="form-control rounded-2" name="mobileNumber" type="number">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label"><i class="fas fa-envelope"></i> Email</label> 
+                                <input required class="form-control rounded-2" name="email" type="email">
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label"><i class="fas fa-map-marker-alt"></i> Address</label> 
+                                    <input required class="form-control rounded-2" name="address" type="text">
+                                </div>
+
+                                <div class="col">
+                                    <label class="form-label"><i class="fas fa-city"></i> City</label> 
+                                    <input required class="form-control rounded-2" name="city" type="text">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label"><i class="fas fa-flag"></i> State</label> 
+                                    <input required class="form-control rounded-2" name="state" type="text">
+                                </div>
+
+                                <div class="col">
+                                    <label class="form-label"><i class="fas fa-map-pin"></i> Pincode</label> 
+                                    <input required class="form-control rounded-2" name="pincode" type="number">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label"><i class="fas fa-lock"></i> Password</label> 
+                                    <input required class="form-control rounded-2" name="password" type="password" id="pass">
+                                </div>
+
+                                <div class="col">
+                                    <label class="form-label"><i class="fas fa-lock"></i> Confirm Password</label> 
+                                    <input required class="form-control rounded-2" name="confirmpassword" type="password">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label"><i class="fas fa-camera"></i> Profile Image</label> 
+                                <input class="form-control rounded-2" name="img" type="file">
+                            </div>
+
+                            <button type="submit" class="btn text-white col-md-12 rounded-2" 
+                                    style="background-color: #2E5C86;">
+                                <i class="fas fa-user-plus"></i> Register
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="card-footer text-center">
+                        <span>Have an account? </span>
+                        <a href="/login" class="text-warning text-decoration-none fw-bold">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+	
+</body>
+</html>

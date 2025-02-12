@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<!-- Start Slider  -->
+
+		<div >
+			
+				<div >
+					<img src="img/ecom1.webp" class="d-block w-100" alt="..."
+						height="350px">
+				</div>
+				
+				
+			</div>
+			
+			
+		
+
+		<!-- End Slider  -->
+
+		<!--< Start Category Module -->
+		<<div class="container mt-4">
+    <h3 class="text-center mb-4 fw-bold">Categories</h3>
+    <div class="d-flex flex-wrap justify-content-center gap-4">
+        <div class="card shadow-sm text-center p-3" style="width: 150px;" th:each="c:${category}">
+            <img th:src="@{'img/category_img/'+${c.imageName}}" class="img-fluid" 
+                style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;">
+            <a th:href="@{'/products?category='+${c.name}}" class="text-decoration-none mt-2 d-block fw-semibold">
+                [[${c.name}]]
+            </a>
+        </div>
+    </div>
+</div>
+
+		
+
+		<div class="container-fluid bg-light p-3">
+			<div class="row">
+				<p class="text-center fs-4">Latest Product</p>
+
+				<div class="col-md-3" th:each="p:${products}">
+					<div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+						<div class="card-body text-center">
+							<img alt="" th:src="@{'img/product_img/'+${p.image}}" class="" width="65%"
+								height="140px">
+							<p class="text-center"><a th:href="@{'/product/'+${p.id}}" class="text-decoration-none">[[${p.title}]]</a></p>
+						</div>
+					</div>
+				</div>
+
+
+	</section>
+</body>
+</html>
